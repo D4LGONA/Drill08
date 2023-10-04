@@ -2,8 +2,8 @@ from pico2d import *
 
 # Game object class here
 class Grass:
-    def __init__(self): # 생성자.
-        self.image = load_image('grass.png')
+    def __init__(self): # 생성자. self는 자신을 가리키는 더미 변수, 항상 써야 함 !!
+        self.image = load_image('grass.png') # 객체(나)의 속성 만들어 주기
     def draw(self):
         self.image.draw(400, 30)
     def update(self):
@@ -19,14 +19,17 @@ def handle_events():
             running = False
 
 def reset_world():
-    global running
+    global running, grass
     running = True
+    grass = Grass()
 
 def update_world():
+    grass.update()
     pass
 
 def render_world():
     clear_canvas()
+    grass.draw()
     update_canvas()
 
 open_canvas()
