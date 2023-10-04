@@ -28,13 +28,16 @@ class Ball:
     def __init__(self):
         if randint(0, 1) == 1: # 큰 공
             self.image = load_image('ball41x41.png')
+            self.size = 20
         else: # 작은 공
             self.image = load_image('ball21x21.png')
+            self.size = 10
         self.speed = randint(5, 20)
         self.x, self.y = randint(0, 800), 599
 
     def update(self):
         self.y -= self.speed
+        if (self.y - self.size) < 50: self.y = 50 + self.size # 밑에 안내려가게
 
     def draw(self):
         self.image.draw(self.x, self.y)
