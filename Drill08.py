@@ -52,20 +52,20 @@ def handle_events():
             running = False
 
 def reset_world():
-    global running, grass, team, world
+    global running, world
     running = True
-    world = []
     grass = Grass()
-    world.append(grass)
     team = [Boy() for i in range(11)]
     balls = [Ball() for i in range(20)]
+
+    world = []
+    world.append(grass)
     world += team
     world += balls
 
 def update_world():
     for o in world:
         o.update()
-    pass
 
 def render_world():
     clear_canvas()
@@ -84,7 +84,5 @@ while running:
     update_world() # game logic
     render_world() # draw game world
     delay(0.05)
-
-# finalization code
 
 close_canvas()
